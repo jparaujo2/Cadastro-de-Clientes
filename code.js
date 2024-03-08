@@ -1,9 +1,7 @@
 // Função para formatar o número do celular
 function formatarCelular(input) {
-    // Remove todos os caracteres não numéricos
+   
     var numero = input.value.replace(/\D/g, '');
-
-    // Aplica a formatação do número (XX) XXXX-XXXX
     var novoNumero = '(' + numero.substring(0, 2) + ') ' + numero.substring(2, 6) + '-' + numero.substring(6, 10);
 
     // Atualiza o valor do input
@@ -20,8 +18,6 @@ $(document).ready(function() {
     $('.form-check-input').change(function() {
         var checkboxId = $(this).attr('id');
         var isChecked = $(this).is(':checked');
-
-        // Aqui você pode enviar a seleção para algum lugar, por exemplo, um servidor
         console.log('Seleção:', checkboxId, isChecked);
     });
 });
@@ -53,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (notificacoes.length > 0) {
             var mensagem =   notificacoes.join(", ");
-            // Aqui você pode chamar a função backend para enviar as notificações
             alert('Notificações enviadas: ' + mensagem); // Exemplo: Mostrar uma mensagem
         }
     }
@@ -75,8 +70,6 @@ function enviarNotificacao() {
         formData.append("smsCheck", "on");
         enviarSMS(); // Chama a função para enviar SMS
     }
-
-    // Enviar formData para o backend usando fetch API
     fetch('cadastro.php', {
         method: 'POST',
         body: formData
